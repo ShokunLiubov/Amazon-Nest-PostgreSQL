@@ -5,6 +5,16 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 const prisma = new PrismaClient()
 
+const deleteData = async () => {
+    await prisma.category.deleteMany({})
+    await prisma.review.deleteMany({})
+    await prisma.user.deleteMany({})
+    await prisma.product.deleteMany({})
+    await prisma.category.deleteMany({})
+
+    console.log('Delete data...');
+}
+
 const createProduct = async (quantity: number) => {
     const products: Product[] = []
 
@@ -15,14 +25,15 @@ const createProduct = async (quantity: number) => {
         const product = await prisma.product.create({
             data: {
                 name: productName,
-                slug: faker.helpers.slugify(productName),
+                slug: faker.helpers.slugify(productName).toLowerCase(),
                 description: faker.commerce.productDescription(),
                 price: +faker.commerce.price(10, 999, 0),
-                images: Array.from({length: faker.datatype.number({min: 2, max: 6})}).map(()=> faker.image.imageUrl()),
+                images: Array.from({length: faker.datatype.number({min: 2, max: 6})})
+                        .map(()=> faker.image.imageUrl(500,500)),
                 category: {
                     create: {
                         name: categoryName,
-                        slug: faker.helpers.slugify(categoryName),
+                        slug: faker.helpers.slugify(categoryName).toLowerCase(),
                     }
                 },
                 reviews: {
@@ -32,7 +43,7 @@ const createProduct = async (quantity: number) => {
                             text: faker.lorem.paragraph(),
                             user: {
                                 connect: {
-                                    id: 1
+                                    id: 3
                                 }
                             }
                         },
@@ -41,7 +52,7 @@ const createProduct = async (quantity: number) => {
                             text: faker.lorem.paragraph(),
                             user: {
                                 connect: {
-                                    id: 1
+                                    id: 2
                                 }
                             }
                         },
@@ -58,6 +69,7 @@ const createProduct = async (quantity: number) => {
 }
 
 async function main() {
+    // deleteData()
     console.log('Start seeding...');
     
     createProduct(10)
