@@ -18,8 +18,13 @@ export class StatisticsService {
             },
             reviews: true
         })
-        
-        const totalAmount = await this.prisma.$queryRaw`SELECT SUM("Order_item".price * "Order_item".quantity) AS totalAmount FROM "Order" JOIN "Order_item" ON "Order".id = "Order_item"."order_id" WHERE "Order".user_id = ${userId};`
+
+        const totalAmount = await this.prisma.$queryRaw`
+            SELECT SUM("Order_item".price * "Order_item".quantity) AS totalAmount 
+            FROM "Order" 
+            JOIN "Order_item" ON "Order".id = "Order_item"."order_id" 
+            WHERE "Order".user_id = ${userId}
+        `
 
         return [
             {
