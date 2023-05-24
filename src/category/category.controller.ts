@@ -9,19 +9,19 @@ export class CategoryController {
 
   @Auth()
   @Get()
-  async getAll () {
+  async getAll() {
     return this.categoryService.getAll();
   }
 
   @Auth()
   @Get(':id')
-  async getById (@Param(':id') id: string) {
+  async getById(@Param(':id') id: string) {
     return this.categoryService.byId(+id);
   }
 
   @Auth()
   @Get('by-slug/:slug')
-  async getBySlug (@Param(':slug') slug: string) {
+  async getBySlug(@Param(':slug') slug: string) {
     return this.categoryService.bySlug(slug);
   }
 
@@ -29,21 +29,21 @@ export class CategoryController {
   @HttpCode(200)
   @Auth()
   @Put(':id')
-  async updateCategory (@Param('id') id: string, @Body() dto: CategoryDto) {
+  async updateCategory(@Param('id') id: string, @Body() dto: CategoryDto) {
     return this.categoryService.updateCategory(+id, dto);
   }
 
   @HttpCode(200)
   @Auth()
   @Post()
-  async createCategory (@Body() dto: CategoryDto) {
+  async createCategory(@Body() dto: CategoryDto) {
     return this.categoryService.createCategory(dto);
   }
 
   @HttpCode(200)
   @Auth()
   @Delete(':id')
-  async toggleFavorites (@Param('id') id: string) {
+  async toggleFavorites(@Param('id') id: string) {
     return this.categoryService.deleteCategory(+id)
   }
 }

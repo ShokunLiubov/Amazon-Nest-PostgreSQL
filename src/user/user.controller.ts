@@ -10,7 +10,7 @@ export class UserController {
 
   @Auth()
   @Get('profile')
-  async getProfile (@CurrentUser('id') id: number) {
+  async getProfile(@CurrentUser('id') id: number) {
     return this.userService.byId(id);
   }
 
@@ -18,14 +18,14 @@ export class UserController {
   @HttpCode(200)
   @Auth()
   @Put('profile')
-  async updateProfile (@CurrentUser('id') id: number, @Body() dto: UserDto) {
+  async updateProfile(@CurrentUser('id') id: number, @Body() dto: UserDto) {
     return this.userService.updateProfile(id, dto);
   }
 
   @HttpCode(200)
   @Auth()
   @Patch('profile/favorites/:productId')
-  async toggleFavorites (@CurrentUser('id') id: number, @Param('productId') productId: string) {
+  async toggleFavorites(@CurrentUser('id') id: number, @Param('productId') productId: string) {
     return this.userService.toggleFavorites(id, +productId);
   }
  
