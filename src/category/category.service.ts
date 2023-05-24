@@ -7,7 +7,7 @@ import { returnCategoryObject } from './return-category.object'
 @Injectable()
 export class CategoryService {
 
-    constructor (private prisma: PrismaService) {}
+    constructor(private prisma: PrismaService) {}
 
     async byId(id: number) {
 
@@ -47,7 +47,7 @@ export class CategoryService {
         })
     }
 
-    async createCategory (dto: CategoryDto) {
+    async createCategory(dto: CategoryDto) {
  
         await this.prisma.category.create({
             data: {
@@ -60,7 +60,7 @@ export class CategoryService {
  
     }
 
-    async updateCategory (id: number, dto: CategoryDto) {
+    async updateCategory(id: number, dto: CategoryDto) {
  
         return this.prisma.category.update({
             where: {
@@ -74,7 +74,7 @@ export class CategoryService {
  
     }
 
-    async deleteCategory (id: number) {
+    async deleteCategory(id: number) {
  
         await this.prisma.category.delete({
             where: {

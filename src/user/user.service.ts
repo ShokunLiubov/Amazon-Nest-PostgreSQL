@@ -8,9 +8,9 @@ import { UserDto } from './user.dto'
 @Injectable()
 export class UserService {
 
-    constructor (private prisma: PrismaService) {}
+    constructor(private prisma: PrismaService) {}
 
-    async byId (id: number, selectObject: Prisma.UserSelect = {}) {
+    async byId(id: number, selectObject: Prisma.UserSelect = {}) {
 
         const user = this.prisma.user.findUnique({
             where: {
@@ -39,7 +39,7 @@ export class UserService {
 
     }
 
-    async updateProfile (id: number, dto: UserDto) {
+    async updateProfile(id: number, dto: UserDto) {
 
        const isSameUser = await this.prisma.user.findUnique({
             where: {
@@ -68,7 +68,7 @@ export class UserService {
 
     }
 
-    async toggleFavorites (id: number, productId: number) {
+    async toggleFavorites(id: number, productId: number) {
 
         const user = await this.byId(id)
 
@@ -93,6 +93,5 @@ export class UserService {
 
         return { message: 'success' }
     }
-
 
 }
