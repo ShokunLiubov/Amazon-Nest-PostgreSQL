@@ -9,9 +9,10 @@ import { ProductModule } from './product/product.module';
 import { CategoryModule } from './category/category.module';
 import { ReviewModule } from './review/review.module';
 import { StatisticsModule } from './statistics/statistics.module';
+import { PaginationModule } from './pagination/pagination.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(),AuthModule, UserModule, ProductModule, CategoryModule, ReviewModule, StatisticsModule],
+  imports: [ConfigModule.forRoot(),AuthModule, UserModule, ProductModule, CategoryModule, ReviewModule, StatisticsModule, PaginationModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
