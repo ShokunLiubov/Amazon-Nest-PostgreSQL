@@ -15,13 +15,13 @@ export class CategoryController {
 
   @Auth()
   @Get(':id')
-  async getById(@Param(':id') id: string) {
+  async getById(@Param('id') id: string) {
     return this.categoryService.byId(+id);
   }
 
   @Auth()
   @Get('by-slug/:slug')
-  async getBySlug(@Param(':slug') slug: string) {
+  async getBySlug(@Param('slug') slug: string) {
     return this.categoryService.bySlug(slug);
   }
 
@@ -43,7 +43,7 @@ export class CategoryController {
   @HttpCode(200)
   @Auth()
   @Delete(':id')
-  async toggleFavorites(@Param('id') id: string) {
+  async deleteCategory(@Param('id') id: string) {
     return this.categoryService.deleteCategory(+id)
   }
 }
