@@ -1,0 +1,12 @@
+[
+    {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[javascript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+    },
+    {
+        "editor.fontFamily": "DankMono Nerd Font, FuraCode Nerd Font Mono",
+        "editor.fontLigatures": true
+    }
+]
