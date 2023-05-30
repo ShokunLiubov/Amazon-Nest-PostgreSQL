@@ -1,8 +1,8 @@
 {
-  "trailingComma": "none",
-  "tabwidth": 2,
-  "useTabs": true,
-  "semi": false,
-  "singleQuote": true,
-  "arrowParens": "avoid"
+	"trailingComma": "none",
+	"tabwidth": 2,
+	"useTabs": true,
+	"semi": false,
+	"singleQuote": true,
+	"arrowParens": "avoid"
 }
