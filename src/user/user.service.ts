@@ -31,7 +31,7 @@ export class UserService {
             },
         })
 
-        if(!user) {
+        if (!user) {
                 throw new Error('User not found')
         }
 

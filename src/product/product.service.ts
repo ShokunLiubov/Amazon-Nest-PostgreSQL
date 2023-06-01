@@ -87,7 +87,7 @@ export class ProductService {
             select: returnProductObjectFullest
         })
 
-        if(!product) {
+        if (!product) {
             throw new NotFoundException('Product not found')
         }
 
@@ -103,7 +103,7 @@ export class ProductService {
             select: returnProductObjectFullest
         })
 
-        if(!product) {
+        if (!product) {
             throw new Error('Product not found')
         }
 
@@ -121,7 +121,7 @@ export class ProductService {
             select: returnProductObjectFullest
         })
 
-        if(!product) {
+        if (!product) {
             throw new Error('Product not found')
         }
 

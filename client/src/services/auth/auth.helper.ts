@@ -1,8 +1,9 @@
 import { IAuthResponse, ITokens } from '@/store/user/user.interface'
 import Cookies from 'js-cookie'
+import { EnumTokens } from './tokens.enum'
 
 export const getAccessStorage = () => {
-    const accessToken = Cookies.get('accessToken')
+    const accessToken = Cookies.get(EnumTokens.ACCESS_TOKEN)
     return accessToken || null
 }
 
@@ -11,13 +12,13 @@ export const getUserFromStorage = () => {
 }
 
 export const saveTokenStorage = (data: ITokens) => {
-    Cookies.set('accessToken', data.accessToken)
-    Cookies.set('refreshToken', data.refreshToken)
+    Cookies.set(EnumTokens.ACCESS_TOKEN, data.accessToken)
+    Cookies.set(EnumTokens.REFRESH_TOKEN, data.refreshToken)
 }
 
 export const removeFromStorage = () => {
-    Cookies.remove('accessToken')
-    Cookies.remove('refreshToken')
+    Cookies.remove(EnumTokens.ACCESS_TOKEN)
+    Cookies.remove(EnumTokens.REFRESH_TOKEN)
     localStorage.removeItem('user')
 }
 
