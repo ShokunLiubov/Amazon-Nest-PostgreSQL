@@ -2,7 +2,7 @@ import { IAuthResponse, ITokens } from '@/store/user/user.interface'
 import Cookies from 'js-cookie'
 import { EnumTokens } from './tokens.enum'
 
-export const getAccessStorage = () => {
+export const getAccessToken = () => {
     const accessToken = Cookies.get(EnumTokens.ACCESS_TOKEN)
     return accessToken || null
 }
