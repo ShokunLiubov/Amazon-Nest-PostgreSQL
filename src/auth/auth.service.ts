@@ -17,7 +17,7 @@ export class AuthService {
             }
         })
 
-        if(existUser) {
+        if (existUser) {
             throw new BadRequestException('User already exist')
         }
 
@@ -49,7 +49,7 @@ export class AuthService {
 
         const result = await this.jwt.verifyAsync(refreshToken)
 
-        if(!result) {
+        if (!result) {
             throw new UnauthorizedException('Invalid refresh token')
         }
 
@@ -96,7 +96,7 @@ export class AuthService {
             }
         })
 
-        if(!user) {
+        if (!user) {
             throw new NotFoundException('User not registration')
         }
 
