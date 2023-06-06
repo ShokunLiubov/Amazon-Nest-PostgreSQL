@@ -1,3 +1,5 @@
+import { IProduct } from './product.interface'
+
 export interface IUser {
     id: number,
     email: string,
@@ -5,4 +7,8 @@ export interface IUser {
     avatarPath: string,
     password: string,
     phone: string,
+}
+
+export interface IFullUser extends IUser{
+    favorites: IProduct[]
 }

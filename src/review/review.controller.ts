@@ -24,7 +24,7 @@ export class ReviewController {
 
   @HttpCode(200)
   @Get('rating/:productId')
-  async getAverageValueByReview(@Param('productId') productId: string) {
+  async getAverageByProduct(@Param('productId') productId: string) {
     return this.reviewService.getAverageValueByReview(+productId);
   }
   

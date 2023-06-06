@@ -1,5 +1,4 @@
-import { getContentType } from '@/api/api.helper'
-import { instance } from '@/api/api.interceptor'
+import { axiosClassic } from '@/api/api.interceptor'
 import { IAuthResponse, IEmailPassword } from '@/store/user/user.interface'
 import Cookies from 'js-cookie'
 import { HttpMethods } from '../enum/httpMethods.enum'
@@ -10,7 +9,7 @@ const AUTH = '/auth'
 
 export const AuthService = {
     async main(type: 'login' | 'register', data: IEmailPassword) {
-        const response = await instance<IAuthResponse>({
+        const response = await axiosClassic<IAuthResponse>({
             url: `${AUTH}/${type}`,
             method: HttpMethods.POST,
             data
@@ -26,12 +25,9 @@ export const AuthService = {
     async getNewTokens() {
         const refreshToken = Cookies.get(EnumTokens.REFRESH_TOKEN)
 
-        const response = await instance<string, {data: IAuthResponse}>({
-            url: `${AUTH}/access-token`,
-            method: HttpMethods.POST,
-            data: refreshToken,
-            headers: getContentType()
-        })
+        const response = await axiosClassic.post<string, {data: IAuthResponse}>(
+            `${AUTH}/access-token`, { refreshToken }
+        )
 
         if (response.data.accessToken) {
             saveToStorage(response.data)

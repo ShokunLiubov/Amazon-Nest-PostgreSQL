@@ -1,5 +1,5 @@
 import { instance } from '@/api/api.interceptor'
-import { IUser } from '@/types/user.interface'
+import { IFullUser, IUser } from '@/types/user.interface'
 import { HttpMethods } from '../enum/httpMethods.enum'
 import { IUserData } from './userData.interface'
 
@@ -7,7 +7,7 @@ const USERS = '/users'
 
 export const UserService = {
     async getProfile() {
-        return instance<IUser[]>({
+        return instance<IFullUser>({
             url: `${USERS}/profile`,
             method: HttpMethods.GET
         })

@@ -10,9 +10,18 @@ export interface IProduct {
     images: string[]
     createdAt: string
     reviews: IReview[]
-    category: ICategory[]
+    category: ICategory
 }
 
 export interface IProductDetails {
     product: IProduct
+}
+
+export type TypeProduct  = {
+    products: IProduct[]
+}
+
+export type TypePaginationProduct  = {
+    length: number
+    products: IProduct[]
 }
