@@ -1,5 +1,5 @@
-import { instance } from '@/api/api.interceptor'
-import { IProduct } from '@/types/product.interface'
+import { axiosClassic, instance } from '@/api/api.interceptor'
+import { IProduct, TypePaginationProduct } from '@/types/product.interface'
 import { HttpMethods } from '../enum/httpMethods.enum'
 import { IProductData, TypeDataFilters } from './productData.interface'
 
@@ -7,7 +7,7 @@ const PRODUCT = '/product'
 
 export const ProductService = {
     async getAll(queryData = {} as TypeDataFilters) {
-        return instance<IProduct[]>({
+        return axiosClassic<TypePaginationProduct>({
             url: PRODUCT,
             method: HttpMethods.GET,
             params: queryData
@@ -15,21 +15,21 @@ export const ProductService = {
     },
      
     async getById(id: string | number) {
-        return instance<IProduct>({
+        return axiosClassic<IProduct>({
             url: `${PRODUCT}/${id}`,
             method: HttpMethods.GET
         })
     },
 
     async getBySlug(slug: string) {
-        return instance<IProduct>({
+        return axiosClassic<IProduct>({
             url: `${PRODUCT}/by-slug/${slug}`,
             method: HttpMethods.GET
         })
     },
 
     async byCategory(category: string) {
-        return instance<IProduct[]>({
+        return axiosClassic<IProduct[]>({
             url: `${PRODUCT}/by-category/${category}`,
             method: HttpMethods.GET
         })
