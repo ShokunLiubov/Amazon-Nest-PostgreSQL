@@ -15,6 +15,7 @@ export const AddToCart: FC<{ product: IProduct }> = ({ product }) => {
 	return (
 		<div>
 			<button
+				className="text-primary"
 				onClick={() => {
 					currentElement
 						? removeFromCart({ id: currentElement.id })
