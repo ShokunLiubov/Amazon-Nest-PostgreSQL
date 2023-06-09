@@ -7,11 +7,13 @@ const PRODUCT = '/product'
 
 export const ProductService = {
     async getAll(queryData = {} as TypeDataFilters) {
-        return axiosClassic<TypePaginationProduct>({
+        const { data } = await  axiosClassic<TypePaginationProduct>({
             url: PRODUCT,
             method: HttpMethods.GET,
             params: queryData
         })
+
+        return data
     },
      
     async getById(id: string | number) {
