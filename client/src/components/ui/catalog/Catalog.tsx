@@ -22,11 +22,13 @@ export const Catalog: FC<ICatalog> = ({ products, isLoading, title }) => {
 		<section>
 			{title ? <Heading className="mb-5">{title}</Heading> : ''}
 			{products.length ? (
-				<div className="grid grid-cols-4 gap-10">
-					{products.map(product => (
-						<ProductItem key={product.id} product={product} />
-					))}
-				</div>
+				<>
+					<div className="grid grid-cols-4 gap-10">
+						{products.map(product => (
+							<ProductItem key={product.id} product={product} />
+						))}
+					</div>
+				</>
 			) : (
 				<div>There are no products!</div>
 			)}
