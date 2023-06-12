@@ -12,13 +12,11 @@ export class CategoryController {
     return this.categoryService.getAll();
   }
 
-  @Auth()
   @Get(':id')
   async getById(@Param('id') id: string) {
     return this.categoryService.byId(+id);
   }
 
-  @Auth()
   @Get('by-slug/:slug')
   async getBySlug(@Param('slug') slug: string) {
     return this.categoryService.bySlug(slug);

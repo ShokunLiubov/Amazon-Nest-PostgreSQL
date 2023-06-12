@@ -65,6 +65,7 @@ const Auth: FC = () => {
 										message: 'Please enter a valid email address'
 									}
 								})}
+								name="Email"
 								placeholder="Email"
 								error={errors.email?.message}
 							/>
@@ -77,6 +78,7 @@ const Auth: FC = () => {
 										message: 'Min length should more 6 symbols '
 									}
 								})}
+								name="Password"
 								placeholder="Password"
 								error={errors.password?.message}
 								type="password"

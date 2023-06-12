@@ -17,11 +17,11 @@ body {
 }
 
 .open-menu {
-  opacity: 1;
+  display: block;
   transform: scale(1);
 }
 
 .close-menu {
-  opacity: 0;
+  display: none;
   transform: scale(0.8);
 }

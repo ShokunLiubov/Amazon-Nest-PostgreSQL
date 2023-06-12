@@ -15,47 +15,47 @@ export class ProductService {
         ) {}
 
     async getAll(dto: GetAllProductDto = {}) {
-        const { sort, searchTerm } = dto
+        const { sort, searchItems } = dto
         
         const prismaSort: Prisma.ProductOrderByWithRelationInput[] = []
 
         switch(sort) {
             case EnumProductSort.HIGH_PRICE:
-                prismaSort.push({ price: 'asc' })
-                break
-
-            case EnumProductSort.LOW_PRISE: 
                 prismaSort.push({ price: 'desc' })
                 break
 
+            case EnumProductSort.LOW_PRISE: 
+                prismaSort.push({ price: 'asc' })
+                break
+
             case EnumProductSort.NEWEST:
-                prismaSort.push({ createdAt: 'asc' })
+                prismaSort.push({ createdAt: 'desc' })
                 break
 
             case EnumProductSort.OLDEST:
-                prismaSort.push({ createdAt: 'desc' })
+                prismaSort.push({ createdAt: 'asc' })
                 break
         }
 
-        const prismaSearchTermFilter: Prisma.ProductWhereInput = searchTerm ? {
+        const prismaSearchTermFilter: Prisma.ProductWhereInput = searchItems ? {
             OR: [
                 {
                     category: {
                         name: {
-                            contains: searchTerm,
+                            contains: searchItems,
                             mode: 'insensitive'
                         }
                     },
                 },
                 {
                     name: {
-                        contains: searchTerm,
+                        contains: searchItems,
                         mode: 'insensitive'
                     },
                 },
                 {
                     description: {
-                        contains: searchTerm,
+                        contains: searchItems,
                         mode: 'insensitive'
                     }
                 }

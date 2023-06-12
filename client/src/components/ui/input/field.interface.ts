@@ -6,4 +6,5 @@ export interface IField extends InputHTMLAttributes<HTMLInputElement>  {
 	placeholder: string
     Icon?: IconType
     error?: string
+    name?: string
 }

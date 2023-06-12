@@ -8,6 +8,7 @@ const colors = {
   grey: '#CDCDCD',
   primary: '#FF9902',
   secondary: '#161D25',
+  secondaryTr: '#324e797d',
   'bg-color': '#F2F2F5',
   aqua: '#268697',
   red: twColors.red[400]
