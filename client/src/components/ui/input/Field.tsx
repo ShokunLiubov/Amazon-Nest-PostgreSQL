@@ -1,12 +1,20 @@
 import cn from 'clsx'
 import { forwardRef } from 'react'
 
-// import stylesfro
 import { IField } from './field.interface'
 
 const Field = forwardRef<HTMLInputElement, IField>(
 	(
-		{ placeholder, className, Icon, error, type = 'text', style, ...rest },
+		{
+			placeholder,
+			className,
+			Icon,
+			error,
+			type = 'text',
+			style,
+			name,
+			...rest
+		},
 		ref
 	) => {
 		return (
@@ -14,7 +22,7 @@ const Field = forwardRef<HTMLInputElement, IField>(
 				<label>
 					<span className="mb-1 block">
 						{Icon && <Icon className="mr-3" />}
-						{placeholder}
+						{name}
 					</span>
 					<input
 						ref={ref}

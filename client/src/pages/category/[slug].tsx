@@ -9,18 +9,22 @@ import { Meta } from '@/ui/Meta'
 import { Catalog } from '@/ui/catalog/Catalog'
 import { Layout } from '@/ui/layout/Layout'
 
-export const CategoryPage: NextPage<{
+const CategoryPage: NextPage<{
 	products: IProduct[]
 	category: ICategory
 }> = ({ products, category }) => {
+	console.log(category)
+
 	return (
-		<Meta title={category.name}>
+		<Meta title={category?.name}>
 			<Layout>
-				<Catalog products={products} title={category.name} />
+				<Catalog products={products || []} title={category?.name} />
 			</Layout>
 		</Meta>
 	)
 }
+
+export default CategoryPage
 
 export const getStaticPath: GetStaticPaths = async () => {
 	const categories = await CategoryService.getAll()
@@ -32,6 +36,13 @@ export const getStaticPath: GetStaticPaths = async () => {
 	})
 
 	return { paths, fallback: 'blocking' }
+}
+
+export async function getStaticPaths() {
+	return {
+		paths: [{ params: { slug: '/category/' } }],
+		fallback: true
+	}
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
